@@ -4,6 +4,8 @@ const db = require("./config/db");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json()); //req.body
 
+require('dotenv').config();
+
 
 
 app.get("/", function (req, res) {
@@ -16,8 +18,9 @@ const bookRoutes = require('./routes/booksRoutes')
 //user Routes
 app.use('/books', bookRoutes)
 
+const PORT = process.env.PORT || 3000
 
 // Server listen
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server Is Listen 3000");
 });
