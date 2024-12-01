@@ -1,33 +1,20 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-//Define the MongoDB connection URL
-// const mongoURL = "mongodb://127.0.0.1:27017/bookDB";
-// const mongoURL = 'mongodb+srv://mkuser:mktest@cluster0.v4f0u.mongodb.net/'
-// const mongoURL = 'mongodb+srv://mkuser:mktest@cluster0.v4f0u.mongodb.net/'
-
 const mongoURL = process.env.MONGODB_LOCAL_URL
 
-//Set Up  MongoDB connections
-mongoose.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+if (!mongoURL) {
+    throw new Error('Please define the mongoURL environment variable in your .env file');
+}
 
-// Mongoose maintains a default connections object representing the mongoDB connections
-const db = mongoose.connection;
+async function connectDB() {
+    try {
+        await mongoose.connect(mongoURL);
+        console.log('Connection Established with MongoDB Successfully');
+    } catch (error) {
+        console.error('Error connecting to MongoDB:', error);
+        process.exit(1);  // Exit process with failure
+    }
+};
 
-//Define event listeners for database connections
-db.on("connected", () => {
-  console.log("Connected to MongoDB server");
-});
-
-db.on("error", () => {
-  console.log("MongoDB connections Error");
-});
-
-db.on("disconnected", () => {
-  console.log("MongoDB disconnected");
-});
-
-module.exports = db;
+module.exports = connectDB
