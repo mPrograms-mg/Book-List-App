@@ -16,7 +16,6 @@ const getBook = async (req, res) => {
         });
     }
     catch (error) {
-        console.log("Error:", error);
         res.status(500).json({
             message: "An error occurred while saving the book.",
             error: error.message, // Include the error message fo
@@ -41,7 +40,6 @@ const getBookByType = async (req, res) => {
         }
     }
     catch (error) {
-        console.log("Error:", error);
         res.status(500).json({
             message: "An error occurred while saving the book.",
             error: error.message, // Include the error message fo
@@ -58,15 +56,12 @@ const addBook = async (req, res) => {
 
         // Save the Books to the Database
         const response = await newBook.save();
-
-        console.log("Book Successfully Save");
         res.status(200).json({
             message: 'Book Addedd Successfully',
             response: response
         });
     }
     catch (error) {
-        console.log("Error:", error);
         res.status(500).json({
             message: "An error occurred while saving the book.",
             error: error.message, // Include the error message fo
@@ -93,7 +88,6 @@ const updateBook = async (req, res) => {
         });
     }
     catch (error) {
-        console.log("Error:", error);
 
         res.status(500).json({
             message: "An error occurred while saving the book.",
@@ -119,7 +113,6 @@ const deleteBook = async (req, res) => {
         });
     }
     catch (error) {
-        console.log("Error:", error);
         res.status(500).json({
             message: "An error occurred while saving the book.",
             error: error.message, // Include the error message fo

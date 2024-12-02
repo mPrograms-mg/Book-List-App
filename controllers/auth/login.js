@@ -19,7 +19,7 @@ const loginUser = async (req, res) => {
         }
 
         const token = await jwt.sign({ email: email }, JWT_SECRET)
-        res.status(201).json({ message: 'User Login successfully', response: email, token: token });
+        res.status(201).json({ message: 'User Login successfully', response: { email, matchPassword }, token: token });
     } catch (error) {
         console.log(error);
     }

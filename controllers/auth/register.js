@@ -8,9 +8,8 @@ const JWT_SECRET = process.env.JWT_SECRET; // Replace with a secure key in produ
 const registerUser = async (req, res) => {
     const { email, password } = req.body;
 
-    console.log("Email.", email);
-
-    try { // Check if the user already exists
+    try {
+        // Check if the user already exists
         const existingUser = await User.findOne({ email: email });
         if (existingUser) {
             return res.status(400).json({ error: 'User already exists' });
