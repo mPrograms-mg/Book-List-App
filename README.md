@@ -24,7 +24,7 @@ nodemon and run server.js
 Use to `http://localhost:4000` to local api url for react app
 ```
 
--- .evn File code
+- EVN File code
 
 ```
 PORT=4000
