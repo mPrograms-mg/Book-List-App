@@ -17,13 +17,17 @@ git clone  https://github.com/mPrograms-mg/Book-List-Node-App.git
 ```
 cd Book-List-Node-App
 npm install
+nodemon and run server.js
 ```
 
-- nodemon and run server.js
+```
+Use to `http://localhost:4000` to local api url for react app
+```
 
-Use to `http://localhost:4000` to react app
+-- .evn File code
 
 ```
 PORT=4000
 MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/bookDB
+JWT_SECRET=Mk!@#$1234
 ```
